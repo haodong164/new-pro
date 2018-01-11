@@ -1,0 +1,67 @@
+<!DOCTYPE >
+<html>
+<head>
+<meta content="text/html;charset=UTF-8">
+<title>省市区三级联合</title>
+
+<script type="text/JavaScript" src='__STATIC__js/jquery.min.js'></script>
+
+</head>
+
+<body>
+	<select name="one" id="one">
+		<option value="null">请选择</option>
+		{foreach item="val" name="one"}
+			<option value="{$val.id}">{$val.region_name}</option>
+		{/foreach}
+	</select>
+	
+	<select name="two" id="two">
+		<option class="two">请选择</option>
+	</select>
+	
+	<select name="three" id="three">
+		<option class="three">请选择</option>
+	</select>
+	
+	<script type="text/javascript">
+		$('#one').change(function(){
+			$('.twos').remove(); 
+			$('.threes').remove();
+			$.ajax({
+				url:"{:url('Index/two')}",
+				type:"POST",
+				data:'pid='+$('#one').val(),
+				success:function(data){
+					$(data).each(function(index,list){
+						var option="<option class='twos' value='"+list.id+"'>"+list.region_name+"</option>";
+						$('#two').append(option);
+					})
+				},
+				error:function(){
+					alert('fail');
+				},
+			});
+		});
+		
+		
+		$('#two').change(function(){
+		$('.threes').remove();
+			$.ajax({
+				url:"{:url('Index/three')}",
+				type:"POST",
+				data:'pid='+$('#two').val(),
+				success:function(data){
+					$(data).each(function(index,val){
+						var option="<option class='threes'>"+val.region_name+"</option>";
+						$('#three').append(option);
+					})
+				},
+				error:function(){
+					alert('fail');
+				},
+			});
+		});
+	</script>
+</body>
+</html>

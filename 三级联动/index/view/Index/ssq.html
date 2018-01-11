@@ -1,0 +1,62 @@
+<!DOCTYPE >
+<html>
+<head>
+<meta content="text/html;charset=UTF-8">
+<title>省市区三级联合</title>
+
+<script type="text/JavaScript" src='__STATIC__js/jquery.min.js'></script>
+<!-- <script type="text/JavaScript" src='__STATIC__js/bootstrap.min.js'></script> -->
+<!-- <script type="text/JavaScript" src='__STATIC__js/jquery.SuperSlide.2.1.1.js'></script> -->
+<!-- <script type="text/javascript" src="__STATIC__js/common.js"></script> -->
+<!-- <script type="text/JavaScript" src='__STATIC__layer/layer.js'></script> -->
+</head>
+
+<body>
+<select name="sheng" id="sheng">
+	<option>--选择省份--</option>
+    {foreach item="pro" name="region"}
+        <option value="{$pro.id}" >
+            {$pro.region_name}
+        </option>
+    {/foreach}
+</select>
+<!-- 城市 -->
+<select name="shi" id="shi">
+    <option></option>
+</select>
+<!-- 区县 -->
+<select name="qu" id="qu">
+    <option></option>
+</select>
+<script type="text/javascript">
+$('#sheng').change(function(){
+    $.ajax({
+        url:"http://www.0910.com/index/index/shi",
+        type:"POST",
+        data:'sid='+$('#sheng').val(),
+        success:function(data){
+            $('#shi').html(data);
+        },
+		error:function(){
+			alert('fail');
+		}
+    });
+});
+$('#shi').change(function(){
+	$.ajax({
+		url:"http://www.0910.com/index/index/qu",
+		type:"POST",
+		data:'sid='+$('#shi').val(),
+		success:function(data){
+			$('#qu').html(data);
+		},
+	})
+})
+//function change(data) {
+//    $("#pro option").remove();  //清空省
+//    $("#city option").remove();      //清空市
+//    $("#area option").remove();
+//};
+</script>
+</body>
+</html>
