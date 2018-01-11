@@ -1,0 +1,147 @@
+<html>
+	<head>
+	<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+	 <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<style>
+.php{display:block;width:70px;float:left;font-size:18px;text-align:content};
+</style>
+		<title>
+			学生信息
+		</title>
+	</head>
+<body style="margin:0 auto; text-align:center">
+	<div style="width:100%;margin:auto">
+		<h1>就业调查结果
+		</h1>
+		<div>
+			<h3>总调查人数：{$num}</h3>
+		</div>
+		<div style="width:80%;margin:0 auto">
+			<span class="php">PHP：</span>
+			<span class="php">总{$phpnum}人</span>
+			{foreach name="php" item="php"}
+				<span class="php">{$php.inten}:</span>
+				<span class="php">{$php.a}人</span>
+			{/foreach}
+		</div>
+		<div style="clear:both;width:80%;margin:0 auto">
+			<span class="php">设计：</span>
+			<span class="php">总{$webnum}人</span>
+			{foreach name="web" item="web"}
+				<span class="php">{$web.inten}:</span>
+				<span class="php">{$web.a}人</span>
+			{/foreach}
+		</div>
+		<div style="clear:both;width:80%;margin:0 auto">
+			<span class="php">JAVA：</span>
+			<span class="php">总{$javanum}人</span>
+			{foreach name="java" item="java"}
+				<span class="php">{$java.inten}:</span>
+				<span class="php">{$java.a}人</span>
+			{/foreach}
+		</div>
+		<div style="clear:both;width:80%;margin:0 auto;border-top:1px solid #aaa">
+			<span class="php">合计：</span>
+			<span class="php">总{$num}人</span>
+			{foreach name="count" item="count"}
+				<span class="php">{$count.inten}:</span>
+				<span class="php">{$count.a}人</span>
+			{/foreach}
+		</div>
+		<div style="clear:both;margin-top:50px">
+			<span style="font-size:24px;display:block">PHP班详细信息</span>
+			 
+			<div style="width:80%; margin:0 auto;">
+				<table style="line-height:25px;" width="100%" border="1" cellpadding="0" cellspacing="0">
+					<tr>
+						<td style="text-align:center" width="5%">编号</td>
+						<td style="text-align:center" width="10%">姓名</td>
+						<td style="text-align:center" width="10%">意向城市</td>
+						
+						<td style="text-align:center" width="10%">是否愿意<br/>再学一年</td>
+						<td style="text-align:center" width="10%">家长是否<br/>知情并支持</td>
+						<td style="text-align:center" width="50%">原因</td>
+						
+					</tr>
+					{foreach item="php1" key="key" name="php1"}
+					<tr>
+					<td style="text-align:center">{$key+1}</td>
+						<td style="text-align:center">{$php1.username}</td>
+						<td style="text-align:center">{$php1.inten}</td>
+						
+						<td style="text-align:center">{if condition="$php1.liuxiao eq 1"}否{else}<font color="#f00">是</font>{/if}</td>
+						<td style="text-align:center">{if condition="$php1.support eq 1"}<font color="#f00">否</font>{else}是{/if}</td>
+						<td style="text-align:center">{$php1.reason}</td>
+						
+					</tr>
+					{/foreach}
+				</table>
+			</div>
+			 
+		</div>
+		<div style="clear:both;margin-top:50px">
+			<span style="font-size:24px;display:block">设计班详细信息</span>
+			 
+			<div style="width:80%; margin:0 auto;">
+				<table style="line-height:25px;" width="100%" border="1" cellpadding="0" cellspacing="0">
+					<tr>
+						<td style="text-align:center" width="5%">编号</td>
+						<td style="text-align:center" width="10%">姓名</td>
+						<td style="text-align:center" width="10%">意向城市</td>
+						
+						<td style="text-align:center" width="10%">是否愿意<br/>再学一年</td>
+						<td style="text-align:center" width="10%">家长是否<br/>知情并支持</td>
+						<td style="text-align:center" width="50%">原因</td>
+						
+					</tr>
+					{foreach item="web1" key="key" name="web1"}
+					<tr>
+					<td style="text-align:center">{$key+1}</td>
+						<td style="text-align:center">{$web1.username}</td>
+						<td style="text-align:center">{$web1.inten}</td>
+						
+						<td style="text-align:center">{if condition="$web1.liuxiao eq 1"}否{else}<font color="#f00">是</font>{/if}</td>
+						<td style="text-align:center">{if condition="$web1.support eq 1"}<font color="#f00">否</font>{else}是{/if}</td>
+						<td style="text-align:center">{$web1.reason}</td>
+						
+					</tr>
+					{/foreach}
+				</table>
+			</div>
+			 
+		</div>
+		<div style="clear:both;margin-top:50px">
+			<span style="font-size:24px;display:block">JAVA班详细信息</span>
+			 
+			<div style="width:80%; margin:0 auto;">
+				<table style="line-height:25px;" width="100%" border="1" cellpadding="0" cellspacing="0">
+					<tr>
+						<td style="text-align:center" width="5%">编号</td>
+						<td style="text-align:center" width="10%">姓名</td>
+						<td style="text-align:center" width="10%">意向城市</td>
+						
+						<td style="text-align:center" width="10%">是否愿意<br/>再学一年</td>
+						<td style="text-align:center" width="10%">家长是否<br/>知情并支持</td>
+						<td style="text-align:center" width="50%">原因</td>
+						
+					</tr>
+					{foreach item="java1" key="key" name="java1"}
+					<tr>
+					<td style="text-align:center">{$key+1}</td>
+						<td style="text-align:center">{$java1.username}</td>
+						<td style="text-align:center">{$java1.inten}</td>
+						
+						<td style="text-align:center">{if condition="$java1.liuxiao eq 1"}否{else}<font color="#f00">是</font>{/if}</td>
+						<td style="text-align:center">{if condition="$java1.support eq 1"}<font color="#f00">否</font>{else}是{/if}</td>
+						<td style="text-align:center">{$java1.reason}</td>
+						
+					</tr>
+					{/foreach}
+				</table>
+			</div>
+			 
+		</div>
+</div>
+
+</body>
+</html>

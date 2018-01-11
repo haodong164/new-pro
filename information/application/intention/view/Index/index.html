@@ -1,0 +1,135 @@
+<html>
+	<head>
+	<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+	 <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<link rel="stylesheet" type="text/css" href="__STATIC__css/manhuaDate.1.0.css">
+<link rel="stylesheet" type="text/css" media="screen" href="__STATIC__css/iPicture.css"/>
+<link rel="stylesheet" type="text/css" media="screen" href="__STATIC__css/css.css"/>
+
+<script type="text/javascript" src="__STATIC__js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="__STATIC__js/jquery.date_input.pack.js"></script>
+<script type="text/javascript" src="__STATIC__layer/2.4/layer.js"></script>
+
+<style>
+
+</style>
+		<title>
+			学生信息
+		</title>
+	</head>
+<body>
+	<div style="margin-top:20px">
+	<form action="" id="leave" method="post" class="basic-grey" enctype="multipart/form-data">
+		<h1>就业调查
+			<span></span>
+		</h1>
+		<label>
+			<span>姓名 :</span>
+			<input id="username" type="text" name="username" placeholder="请输入姓名" />
+			<div style="margin-left:25%" id="showenmsg"></div>
+			<label>
+				<span>意向城市 :</span>
+				<select name="inten">
+					<option selected="selected" value="北京">北京</option>
+					<option value="上海">上海</option>
+					<option value="青岛">青岛</option>
+					<option value="济南">济南</option>
+					<option value="临沂">临沂</option>
+					<option value="杭州">杭州</option>
+					<option value="徐州">徐州</option>
+				</select>
+			</label>
+			
+			<label>
+				<span>原因:</span>
+				<textarea style="border:1px solid #DADADA;color:#aaa" name="reason" id="reason" ></textarea>
+			</label>
+			
+			<label style="margin-top:30px">
+				<!-- <span>是否留学一年 :</span> -->
+				 <!-- <div style="margin-top:20px"> -->
+					<!-- <input type="radio" value="0" name="liuxiao" checked>&nbsp;是 -->
+					<!-- <input type="radio" value="1" name="liuxiao">&nbsp;否 -->
+				 <!-- </div> -->
+				 
+				<div style="margin-left:6%">
+					<span style="display:block;float:left">是否留学一年 :</span>
+					<div style="">
+						<input style="margin-left:5px" type="radio" value="0" name="liuxiao" checked>&nbsp;是
+						<input type="radio" value="1" name="liuxiao">&nbsp;否
+					</div>
+				</div>
+			</label>
+			<label style="margin-top:30px">
+				<!-- <span>是否留学一年 :</span> -->
+				 <!-- <div style="margin-top:20px"> -->
+					<!-- <input type="radio" value="0" name="liuxiao" checked>&nbsp;是 -->
+					<!-- <input type="radio" value="1" name="liuxiao">&nbsp;否 -->
+				 <!-- </div> -->
+				 
+				<div style="margin-left:6%">
+					<span style="display:block;float:left">家长是否已知并支持 :</span>
+					<div style="">
+						<input style="margin-left:5px" type="radio" value="0" name="support" checked>&nbsp;是
+						<input type="radio" value="1" name="support">&nbsp;否
+					</div>
+				</div>
+			</label>
+				<br/>
+				<!-- <input type="submit" class="submit" value="提交" /> -->
+				<input type="button" id="button" class="submit" style="clear:both" value="提交" />
+		</label> 
+</form>
+</div>
+<script src="__STATIC__js/laydate.js"></script>
+<script type="text/javascript" src="__STATIC__js/jquery.ipicture.js"></script>
+<script type="text/javascript">
+	$(function(){
+	$("#button").click(function(){
+		var form = new FormData(document.getElementById("leave"));
+		console.log(form);
+		var username=$('#username').val();
+			if(username==''){
+				layer.msg('请填写姓名');
+				return false;
+			}
+		var reason=$('#reason').val();
+			if(reason==''){
+				layer.msg('请填写原因');
+				return false;
+			}
+		$.ajax({
+			url:"{:url('Index/do_add')}",
+			type:"POST",
+			data:form,
+			processData: false,
+   			contentType: false,
+			success:function(data){
+				switch(data.status){
+					case 1:layer.msg(data.msg, {
+                                 anim: 0
+                              });
+                            setInterval(function () {
+                            location.href="{:url('Index/kong')}";
+                            },1000);
+                    case 2 :layer.msg(data.msg, {
+                                 anim: 0
+                              });break;
+					case 3 :layer.msg(data.msg, {
+                                 anim: 0
+                              });break;
+                }
+			},
+			error:function(){
+				layer.msg('错误');
+			},
+		});
+		
+			
+	});
+
+	})
+
+</script>
+</body>
+</html>

@@ -1,0 +1,88 @@
+<html>
+	<head>
+	<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+	 <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<script type="text/javascript" src="__STATIC__js/jquery-1.7.2.min.js"></script>
+
+<style>
+
+</style>
+		<title>
+			微信数据统计
+		</title>
+	</head>
+<body>
+	<div style="width:500px;margin:0 auto;border:1px solid #ff0">
+		<div style="width:500px;margin:0 auto">
+			<ul style="margin:0; padding:0;list-style:none;">
+				<li style="width:98px;display:block;float:left;text-align:center;border:1px solid #ff0" id='text'>文字</li>
+				<li style="width:98px;display:block;float:left;text-align:center;border:1px solid #ff0" id="image">图片</li>
+				<li style="width:98px;display:block;float:left;text-align:center;border:1px solid #ff0" id='voice'>语音</li>
+				<li style="width:98px;display:block;float:left;text-align:center;border:1px solid #ff0" id='video'>视频</li>
+				<li style="width:98px;display:block;float:left;text-align:center;border:1px solid #ff0" id='orther'>其它</li>
+			</ul>
+		</div>
+		<div style="clear:both;">
+			<div id='text1'>
+				<span>1</span>
+			</div>
+			<div id='image1' style="display:none">
+				<span>2</span>
+			</div>
+			<div id='voice1' style="display:none">
+				<span>3</span>
+			</div>
+			<div id='video1' style="display:none">
+				<span>4</span>
+			</div>
+			<div id='orther1' style="display:none">
+				<span>5</span>
+			</div>
+		</div>
+		
+	</div>
+
+	<script type="text/javascript">
+		$(function(){
+			$("#text").click(function(){
+				$('#text1').show();
+				$('#image1').hide();
+				$('#voice1').hide();
+				$('#video1').hide();
+				$('#orther1').hide();
+			});
+			$("#image").click(function(){
+				$('#image1').show();
+				$('#text1').hide();
+				$('#voice1').hide();
+				$('#video1').hide();
+				$('#orther1').hide();
+			});
+			$("#voice").click(function(){
+				$('#voice1').show();
+				$('#image1').hide();
+				$('#text1').hide();
+				$('#video1').hide();
+				$('#orther1').hide();
+			});
+			$("#video").click(function(){
+				$('#video1').show();
+				$('#image1').hide();
+				$('#voice1').hide();
+				$('#text1').hide();
+				$('#orther1').hide();
+			});
+			$("#orther").click(function(){
+				$('#orther1').show();
+				$('#image1').hide();
+				$('#voice1').hide();
+				$('#video1').hide();
+				$('#text1').hide();
+			});
+		});
+
+	</script>
+
+
+</body>
+</html>

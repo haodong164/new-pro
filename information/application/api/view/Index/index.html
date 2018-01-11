@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head> 
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />  
+	<title>选择</title>
+  </head>
+  <body> 
+		<form action="{:url('Index/do_up')}" method="post">
+			<div style="width:200px;margin:0 auto">
+				<div style="">
+					<input type="checkbox" value="1" {if condition="$info.teacher eq '1'"} checked="checked" {/if} name="teacher"/>我是教师
+				</div>
+				<div>
+					<input type="checkbox" value="1" {if condition="$info.student eq '1'"} checked="checked" {/if} name="stu"/>我是学生
+				</div>
+				<input style="margin-left:20%" type="submit" value="提交">
+			</div>
+		</form>
+  </body>
+</html>
